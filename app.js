@@ -1,3 +1,4 @@
+import { guardarJSON } from './helpers/behaviorArchivo.js';
 import { inquirerMenu,pausa,leerInput} from './helpers/inquirer.js';
 
 import { Tareas } from  './models/tareas.js'
@@ -19,12 +20,15 @@ const main = async () => {
         break;
       case 2:
           //Listado Tareas
-          console.log(tareas._listado);
+          console.log(tareas.getListadoArr());
         break;
       default:
         break;
     }
-    await pausa();
+
+    // guardarJSON(tareas.getListadoArr());
+
+    if(opt!=0) await pausa();
   } while (opt !== 0);
 };
  
