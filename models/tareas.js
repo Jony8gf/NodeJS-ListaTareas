@@ -62,6 +62,31 @@ class Tareas {
         }
     }
 
+    // toggleCompletadas(ids = []){
+    //     ids.forEach(id => {
+    //         const tarea = this._listado[id];
+    //         if(!tarea.completadoEn){
+    //             tarea.completadoEn = new Date().toISOString();
+    //         }
+    //     });
+    //     this.getListadoArr().forEach(tarea => {
+    //         if(!ids.includes(tarea.id)){
+    //             const tarea = this._listado[tarea.id];
+    //             tarea.completadoEn = null;
+    //         }
+    //     }) 
+    // }
+
+    //Refactoring del metodo ToggleCompletadas
+    toggleCompletadas(ids = []) {
+        Object.keys(this._listado).forEach(id => {
+          const tarea = this._listado[id]
+          tarea.completadoEn = ids.includes(id) ? 
+            (tarea.completadoEn || (new Date()).toISOString())
+            : null
+        })
+      }
+
 }
 
 export {Tareas};

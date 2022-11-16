@@ -1,5 +1,5 @@
 import { guardarJSON, leerJSON } from './helpers/behaviorArchivo.js';
-import { inquirerMenu, pausa, leerInput, listadoTareaBorrar, confirmacionBorrar} from './helpers/inquirer.js';
+import { inquirerMenu, pausa, leerInput, listadoTareaBorrar, confirmacionBorrar, listadoTareaCheckList} from './helpers/inquirer.js';
 
 import { Tareas } from  './models/tareas.js'
  
@@ -38,7 +38,8 @@ const main = async () => {
         break;
       case 5:
         //Completar tarea
-        //TODO
+        const ids = await listadoTareaCheckList(tareas.getListadoArr());
+        tareas.toggleCompletadas(ids);
       break;
       case 6:
         //Borrar tarea
